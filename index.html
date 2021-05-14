@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="Pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,13 +10,13 @@
         function CalculoExcesso() {
             var VeloVia = parseInt(document.getElementById("VeloVia").value);
             var VeloCar = parseInt(document.getElementById("VeloCar").value);
-            var P20 = parseFloat(VeloVia / 100) * 20  
-            var P50 = parseFloat(VeloVia / 100) * 50    
-            if (VeloCar - VeloVia <= 0){
+            var P20 = parseFloat(VeloVia / 100) * 20
+            var P50 = parseFloat(VeloVia / 100) * 50
+            if (VeloCar - VeloVia <= 0) {
                 var Status = "Sem multa"
-                var Valor =  "R$00,00"
+                var Valor = "R$00,00"
             }
-            else if (VeloCar - VeloVia >= 1 && VeloCar - VeloVia <= 7){
+            else if (VeloCar - VeloVia >= 1 && VeloCar - VeloVia <= 7) {
                 var Status = "Advertência"
                 var Valor = "3 pontos na carteira e multa no valor de R$88.38"
                 //Leve
@@ -30,26 +31,52 @@
                 var Valor = "5 pontos na carteira e multa no valor de R$195,23"
                 //Grave
             }
-            else if (VeloCar - VeloVia > P50){
+            else if (VeloCar - VeloVia > P50) {
                 var Status = "Infração Gravíssima, Penalidade de suspensão do direito de dirigir"
                 var Valor = "7 pontos na carteira e multa no valor de R$293,47"
                 //Gravíssima
 
             }
-            document.getElementById("Resultado").innerHTML = "<p>"+Status+" "+Valor+"</p>";
+            document.getElementById("Resultado").innerHTML = "<p>" + Status + " " + Valor + "</p>";
         }
         //Questão 3
+        function DigitarCNH() {
+            event.preventDefault();
+            let ContainerNome = document.getElementById(`ContainerNome`);
+            ContainerNome.innerHTML += `<form>
+            <label for="">Insira o nome do condutor</label>
+            <input type="text" id="DadoCondutor">
+            <label for="">Insira o número da habilitação</label>
+            <input type="text" id="DadoHabili">
+            <input type="button" id"" value="Enviar Dados" onclick="EnviarDados()">
+            </form>`;
+        }
+        function EnviarDados() {
+            var NomeCondutor = document.getElementById("DadoCondutor").value;
+            var NumeroHa = document.getElementsByid("DadoHabili").value;
+            console.log(NomeCondutor);
+            console.log(NumeroHa);
+            }
     </script>
 </head>
+
 <body>
-    <label for="">Digite a velocidade máxima permitida pela Via</label>
-    <input type="text" id="VeloVia">
-    <label for="">Digite a velocidade do carro</label>
-    <input type="text" id="VeloCar">
-    <input type="button" value="Calcular" onclick="CalculoExcesso()">
-    <Div id="Resultado"></Div>
-    <Label>Deseja atribuir essa multa a qual CNH?</Label>
-    <input type="button" value="Minha CNH" id="Atribuir">
-    <input type="button" value="CNH diferente da minha" id="NãoAtribuir">
-</body>
+    <form action="">
+        <label for="">Digite a velocidade máxima permitida pela Via</label>
+        <input type="text" id="VeloVia">
+        <label for="">Digite a velocidade do carro</label>
+        <input type="text" id="VeloCar">
+        <input type="button" value="Calcular" onclick="CalculoExcesso()">
+        <Div id="Resultado"></Div>
+    </form>
+
+    <form action="">
+        <Label>Deseja atribuir essa multa a qual CNH?</Label>
+        <input type="button" value="Minha CNH" onclick="DigitarCNH()">
+        <input type="button" value="CNH diferente da minha" onclick="DigitarCNH()">
+        <div id="ContainerNome">
+
+        </div>
+    </form>
+
 </html>
