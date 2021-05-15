@@ -1,0 +1,27 @@
+body{
+    background-image: linear-gradient(to top left,#ff0005,#fff28c);
+    height: 600px;
+}
+header{
+    background: black;
+    text-align: center;
+    padding: 20px;
+    width: 100%;
+}
+nav{
+    overflow: hidden;
+    background-color: #959595;
+    width: 100%;
+}
+nav a{
+    float: left;
+    display: block;
+    color: red;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+nav a:hover{
+    background-color: red;
+    color: black;
+}

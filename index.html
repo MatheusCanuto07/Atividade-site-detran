@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Detran</title>
+    <link rel="stylesheet" href="style.css">
     <script>
         //Questão 1 e 2
         function CalculoExcesso() {
@@ -50,33 +51,48 @@
             <input type="text" id="DadoHabili">
             <input type="button" id"" value="Enviar Dados" onclick="EnviarDados()">
             </form>`;
+            document.getElementById("GerarForm1").disabled=true;
+            document.getElementById("GerarForm2").disabled=true;
         }
         function EnviarDados() {
             var NomeCondutor = document.getElementById("DadoCondutor").value;
             var NumeroHa = document.getElementsByid("DadoHabili").value;
             console.log(NomeCondutor);
             console.log(NumeroHa);
-            }
+        }
     </script>
 </head>
 
 <body>
-    <form action="">
-        <label for="">Digite a velocidade máxima permitida pela Via</label>
-        <input type="text" id="VeloVia">
-        <label for="">Digite a velocidade do carro</label>
-        <input type="text" id="VeloCar">
-        <input type="button" value="Calcular" onclick="CalculoExcesso()">
-        <Div id="Resultado"></Div>
-    </form>
+    <header>
+        <img src="Rec7a71e5e46e6a63e6a0b2a5df896b20.jpg" alt="Detran" width="100" height="50">
+    </header>
+    <nav class="nav">
+        <a href="#">Calcular Multa</a>
+        <a href="#">Trocar conta</a>
+        <a href="#">Detran</a>
+    </nav>
+    <main>
+        <form action="">
+            <label for="">Digite a velocidade máxima permitida pela Via</label>
+            <input type="text" id="VeloVia">
+            <label for="">Digite a velocidade do carro</label>
+            <input type="text" id="VeloCar">
+            <input type="button" value="Calcular" onclick="CalculoExcesso()" >
+            <Div id="Resultado"></Div>
+        </form>
 
-    <form action="">
-        <Label>Deseja atribuir essa multa a qual CNH?</Label>
-        <input type="button" value="Minha CNH" onclick="DigitarCNH()">
-        <input type="button" value="CNH diferente da minha" onclick="DigitarCNH()">
-        <div id="ContainerNome">
+        <form action="">
+            <Label>Deseja atribuir essa multa a qual CNH?</Label>
+            <input type="button" value="Minha CNH" onclick="DigitarCNH()"id="GerarForm1">
+            <input type="button" value="CNH diferente da minha" onclick="DigitarCNH()"id="GerarForm2">
+            <div id="ContainerNome">
 
-        </div>
-    </form>
+            </div>
+        </form>
+    </main>
+    <FOOTER>
+
+    </FOOTER>
 
 </html>
