@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="Pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detran</title>
+    <link rel="stylesheet" href="style.css">
+    
+</head>
+
+<body>
+
+    <header>
+        <img src="Rec7a71e5e46e6a63e6a0b2a5df896b20.jpg" alt="Detran" width="100" height="50">
+    </header>
+    <nav class="nav">
+        <a href="#">Calcular Multa</a>
+        <a href="#">Trocar conta</a>
+        <a href="Impressão.html">Impressão</a>
+    </nav>
+    <main>
+        <form action="">
+            <label for="">Digite a velocidade máxima permitida pela Via</label>
+            <input type="text" id="VeloVia">
+            <label for="">Digite a velocidade do carro</label>
+            <input type="text" id="VeloCar">
+            <input type="button" value="Calcular" onclick="CalculoExcesso()">
+        </form>
+        <Div id="Impressao"></Div>
+
+        <form action="">
+            <Label>Deseja atribuir essa multa a qual CNH?</Label>
+            <input type="button" value="Minha CNH" onclick="DigitarCNH()" id="GerarForm1">
+            <input type="button" value="CNH diferente da minha" onclick="DigitarCNH()" id="GerarForm2">
+            <div id="ContainerNome">
+
+            </div>
+        </form>
+    </main>
+    <FOOTER>
+
+    </FOOTER>
+    <script>
+        let Status = "";
+        let Valor = "";
+        //Questão 1 e 2
+        function CalculoExcesso() {
+            var VeloVia = parseInt(document.getElementById("VeloVia").value);
+            var VeloCar = parseInt(document.getElementById("VeloCar").value);
+            var P20 = parseFloat(VeloVia / 100) * 20
+            var P50 = parseFloat(VeloVia / 100) * 50
+            if (VeloCar - VeloVia <= 0) {
+                Status = "Sem multa"
+                Valor = "R$00,00"
+            }
+            else if (VeloCar - VeloVia >= 1 && VeloCar - VeloVia <= 7) {
+                Status = "Advertência"
+                Valor = "3 pontos na carteira e multa no valor de R$88.38"
+                //Leve
+            }
+            else if (VeloCar - VeloVia < P20 && VeloCar - VeloVia > 7) {
+                Status = "Grave"
+                Valor = "4 pontos na carteira e multa no valor de R$130,16"
+                //Média
+            }
+            else if (VeloCar - VeloVia >= P20 && VeloCar - VeloVia <= P50) {
+                Status = "Infração Gravíssima"
+                Valor = "5 pontos na carteira e multa no valor de R$195,23"
+                //Grave
+            }
+            else if (VeloCar - VeloVia > P50) {
+                Status = "Infração Gravíssima, Penalidade de suspensão do direito de dirigir"
+                Valor = "7 pontos na carteira e multa no valor de R$293,47"
+                //Gravíssima
+
+            }
+            document.getElementById("Impressao").innerHTML = "<p> Vocë recebeu um(uma)" + Status + ", e terá como consequência " + Valor + "</p>";
+        }
+        //Questão 3
+        function DigitarCNH() {
+            event.preventDefault();
+            let ContainerNome = document.getElementById(`ContainerNome`);
+            ContainerNome.innerHTML += `<form>
+            <label for="">Insira o nome do condutor</label>
+            <input type="text" id="DadoCondutor">
+            <label for="">Insira o número da habilitação</label>
+            <input type="text" id="DadoHabili">
+            <input type="button" id"" value="Enviar Dados" onclick="Imprimir()">
+            <div id="ResultadoFinal">
+            </div>
+            </form>`;
+            document.getElementById("GerarForm1").disabled = true;
+            document.getElementById("GerarForm2").disabled = true;
+        }
+        function Imprimir() {
+            var NomeCondutor = document.getElementById("DadoCondutor").value;
+            var NumeroHa = document.getElementById("DadoHabili").value;
+            document.getElementById("ResultadoFinal").innerHTML = "<p>"+NomeCondutor+" "+NumeroHa+"</p>";
+            alert("Dados enviados com sucesso!");
+        }
+    </script>
+</body>
+</html>

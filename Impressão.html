@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detran</title>
+    <link rel="stylesheet" href="style.css"><script>
+        //Questão 1 e 2
+        function CalculoExcesso() {
+            var VeloVia = parseInt(document.getElementById("VeloVia").value);
+            var VeloCar = parseInt(document.getElementById("VeloCar").value);
+            var P20 = parseFloat(VeloVia / 100) * 20
+            var P50 = parseFloat(VeloVia / 100) * 50
+            if (VeloCar - VeloVia <= 0) {
+                var Status = "Parabéns por respeitar a lei"
+                var Valor = "R$00,00"
+            }
+            else if (VeloCar - VeloVia >= 1 && VeloCar - VeloVia <= 7) {
+                var Status = "Advertência"
+                var Valor = "3 pontos na carteira e multa no valor de R$88.38"
+                //Leve
+            }
+            else if (VeloCar - VeloVia < P20 && VeloCar - VeloVia > 7) {
+                var Status = "Grave"
+                var Valor = "4 pontos na carteira e multa no valor de R$130,16"
+                //Média
+            }
+            else if (VeloCar - VeloVia >= P20 && VeloCar - VeloVia <= P50) {
+                var Status = "Infração Gravíssima"
+                var Valor = "5 pontos na carteira e multa no valor de R$195,23"
+                //Grave
+            }
+            else if (VeloCar - VeloVia > P50) {
+                var Status = "Infração Gravíssima, Penalidade de suspensão do direito de dirigir"
+                var Valor = "7 pontos na carteira e multa no valor de R$293,47"
+                //Gravíssima
+
+            }
+            document.getElementById("Resultado").innerHTML = "<p>" + Status + " " + Valor + "</p>";
+            document.getElementById("Container2").innerHTML = "<p> Vocë recebeu um(uma)" + Status + ", e terá como consequência " + Valor + "</p>";
+        }
+        //Questão 3
+        function DigitarCNH() {
+            event.preventDefault();
+            let ContainerNome = document.getElementById(`ContainerNome`);
+            ContainerNome.innerHTML += `<form>
+            <label for="">Insira o nome do condutor</label>
+            <input type="text" id="DadoCondutor">
+            <label for="">Insira o número da habilitação</label>
+            <input type="text" id="DadoHabili">
+            <input type="button" id"" value="Enviar Dados" onclick="EnviarDados()">
+            </form>`;
+            document.getElementById("GerarForm1").disabled = true;
+            document.getElementById("GerarForm2").disabled = true;
+        }
+        function EnviarDados() {
+            var NomeCondutor = document.getElementById("DadoCondutor");
+            var NumeroHa = document.getElementById("DadoHabili");
+            alert("Dados enviados com sucesso!");
+            console.log(NomeCondutor);
+            console.log(NumeroHa);
+        }
+    </script>
+</head>
+
+<body>
+    <header>
+        <img src="Rec7a71e5e46e6a63e6a0b2a5df896b20.jpg" alt="Detran" width="100" height="50">
+    </header>
+    <nav class="nav">
+        <a href="#">Calcular Multa</a>
+        <a href="#">Trocar conta</a>
+        <a href="Impressão.html">Impressão</a>
+    </nav>
+    <main>
+        <div class="Borda">
+            <div class="Container2">
+                
+            </div>
+        </div>
+    </main>
+    <FOOTER>
+
+    </FOOTER>
+</body>
+
+</html>

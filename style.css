@@ -1,6 +1,6 @@
 body{
     background-image: linear-gradient(to top left,#ff0005,#fff28c);
-    height: 600px;
+    height: 100vh;
 }
 header{
     background: black;
@@ -24,4 +24,15 @@ nav a{
 nav a:hover{
     background-color: red;
     color: black;
+}
+.Borda{
+    border: 3px solid black;
+    height: 250px;
+    width: 400px;
+    background-color: chartreuse;
+}
+.Container2{
+    color: white;
+    padding: 20px;
+    background-color: black;
 }
